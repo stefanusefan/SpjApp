@@ -2,3 +2,5 @@ Hanya ingin mencoba brand saja
 mengabungkan file di branch percobaan ke ke branch master
 dengan printah
 git merge percobaan
+
+Upload projek ke git
