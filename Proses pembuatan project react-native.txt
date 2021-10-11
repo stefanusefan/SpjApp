@@ -1,0 +1,42 @@
+1. Buat desain di figma
+2. mencari warana referensi dari https://flatuicolors.com/
+3. mencari ilustrasi referensi dari https://undraw.co/
+4. Mencari icon referensi dari flaticon
+5. setelah membuat desain selanjutnya
+6. intal projek menggunakan react native
+7. Perintah npx react-native init AwesomeProject
+8. jalankan project dengan printah: npx react-native start
+9. jalankan emulator android dgn printah : npx react-native run-android
+10. setelah selesai selanjutnya kita install react-navigation
+    https://reactnavigation.org/docs/getting-started/
+11. printah instalasi : npm install @react-navigation/native
+12. Installing dependencies into a bare React Native project
+	printah :npm install react-native-screens react-native-safe-area-context
+13. Tambahkan konfigurasi di mainaktivity
+14. untuk konfigurasinya lihat dokumentasi react navigation
+15. setelah proses intalasi navigation selanjutnya instal native stack navigator 
+	untuk berpindah halaman
+16. printah npm install @react-navigation/native-stack
+17. Setelah selesai rapikan folder atau filenya dengan sistem atomik desain
+18. Membuat style untuk color dengan membuat componen sendiri didalam projek
+19, menampilkan gambar dari folder asset
+20. menginstal React native svg https://github.com/react-native-svg/react-native-svg#automatically
+21. instal npm add react-native-svg
+22. instal react-native-svg-transformer (dokumentasi)
+	https://github.com/kristerkari/react-native-svg-transformer
+23 cara instalasnya : yarn add --dev react-native-svg-transformer
+24. proses instalasi ridax untuk memanger semua koding
+	https://react-redux.js.org/
+
+	instalasi : npm install redux
+25. Catatan :
+	pada saat menggistal ridux hala yng perlu dilakukan selanjutnya adalah melakukan configurasi redux dengan cara membuat store, reducer didalam projek dengan melakukan kombinasi state
+26. Membuat Action creater dengan menambah file action di redux
+
+
+
+
+alt+sift+0 = menghilangkan function yang tidak digunakan
+pwd printah cmd untuk lihat lokasi saat ini pada komputer
+
+
