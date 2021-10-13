@@ -10,6 +10,7 @@ const initialStateregister ={
         email :'',
         password:'',
         password2:'',
+        spjkey:'spjs5484868',
     },
     title : 'Register Page',
     desc : 'Ini adalah desc untuk Register',

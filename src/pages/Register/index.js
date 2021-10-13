@@ -5,8 +5,44 @@ import { IlustrasiRegister } from '../../assets';
 import { Button, Input } from '../../componets';
 import { setForm } from '../../redux/action';
 import { colors } from '../../utils/colors';
+import { useEffect } from 'react';
 
 const Register =({navigation}) =>{
+
+useEffect(() =>{
+    
+        // $spjkey='spjs5484868';
+
+        // Method Get
+        // fetch('http://suryaprabha.co.id/spj-rest-server/api/poin/?spjkey=spjs5484868')
+        // .then(response => response.json())
+        // .then(json=>console.log(json))
+
+        // const dataForAPI={
+        //     spjkey:'spjs5484868',
+        //    email:'stefanusefan@gmail.com',
+        //    account: '0210051',
+        //    password:'22222',
+
+        // }
+        // // Method Post
+        // fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
+        //     method:'POST',
+        //     headers: {
+        //         'Content-Type':'application/json'
+        //     },
+        //     body: JSON.stringify(sendData)
+        // })
+
+        // .then(response => response.json())
+        // .then(json=>{
+        //     console.log('pos respon: ',json)
+        // })
+
+    sendData();
+
+    }, []);
+
     const {form}= useSelector(state =>state.RegisterReducer);
     const dispatch =useDispatch();
     // Untuk mendapatkan data maka perlu sebuah state yang di import dari react
@@ -38,7 +74,21 @@ const Register =({navigation}) =>{
     };
     // Mengirim data yang diambel dari form input
     const sendData =() =>{
-        console.log('Data yang akan di kirim:',form);
+
+        fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
+            method:'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(form)
+        })
+
+        .then(response => response.json())
+        .then(json=>{
+            console.log('pos respon: ',json)
+        })
+
+        // console.log('Data yang akan di kirim:',form);
     }
     return(
         <View style={styles.wrapper.page}>
