@@ -6,7 +6,7 @@ const initialState = {
 
 const initialStateregister ={
     form:{
-        fullName :'',
+        account :'',
         email :'',
         password:'',
         password2:'',

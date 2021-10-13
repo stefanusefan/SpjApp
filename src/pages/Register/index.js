@@ -1,47 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { IlustrasiRegister } from '../../assets';
 import { Button, Input } from '../../componets';
 import { setForm } from '../../redux/action';
 import { colors } from '../../utils/colors';
+import Axios from 'axios';
 import { useEffect } from 'react';
 
 const Register =({navigation}) =>{
 
-useEffect(() =>{
+
+
+    const [dataUser, setDataUser] =useState({
+        kdcust :'',
+        nmcust:'',
+        pemilik:'',
+        email:'',
+    })
+    const [dataRespon ,setDataRespon] =useState({
+        status:'',
+        pesan:'',
+        data:'',
+    })
+
+// useEffect(() =>{
     
-        // $spjkey='spjs5484868';
+//         // $spjkey='spjs5484868';
 
-        // Method Get
-        // fetch('http://suryaprabha.co.id/spj-rest-server/api/poin/?spjkey=spjs5484868')
-        // .then(response => response.json())
-        // .then(json=>console.log(json))
+//         // Method Get
+//         // fetch('http://suryaprabha.co.id/spj-rest-server/api/poin/?spjkey=spjs5484868')
+//         // .then(response => response.json())
+//         // .then(json=>console.log(json))
 
-        // const dataForAPI={
-        //     spjkey:'spjs5484868',
-        //    email:'stefanusefan@gmail.com',
-        //    account: '0210051',
-        //    password:'22222',
+        // const api={spjkey:'spjs5484868', }
+//         // // Method Post
+//         // fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
+//         //     method:'POST',
+//         //     headers: {
+//         //         'Content-Type':'application/json'
+//         //     },
+//         //     body: JSON.stringify(sendData)
+//         // })
 
-        // }
-        // // Method Post
-        // fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
-        //     method:'POST',
-        //     headers: {
-        //         'Content-Type':'application/json'
-        //     },
-        //     body: JSON.stringify(sendData)
-        // })
+//         // .then(response => response.json())
+//         // .then(json=>{
+//         //     console.log('pos respon: ',json)
+//         // })
 
-        // .then(response => response.json())
-        // .then(json=>{
-        //     console.log('pos respon: ',json)
-        // })
+//     sendData();
 
-    sendData();
-
-    }, []);
+//     }, []);
 
     const {form}= useSelector(state =>state.RegisterReducer);
     const dispatch =useDispatch();
@@ -75,18 +84,29 @@ useEffect(() =>{
     // Mengirim data yang diambel dari form input
     const sendData =() =>{
 
-        fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
-            method:'POST',
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(form)
-        })
+        // fetch('http://suryaprabha.co.id/spj-rest-server/api/registrasi',{
+        //     method:'POST',
+        //     headers: {
+        //         'Content-Type':'application/json'
+        //     },
+        //     body: JSON.stringify(form)
+        // })
 
-        .then(response => response.json())
-        .then(json=>{
-            console.log('pos respon: ',json)
-        })
+        // .then(response => response.json())
+        // .then(json=>{
+        //     console.log('pos respon: ',json)
+        // })
+
+        
+        Axios.post('http://suryaprabha.co.id/spj-rest-server/api/registrasi',form)
+        .then(result => console.log('res :', result))
+        .catch(err => console.log('err :', err))
+        
+
+
+
+
+
 
         // console.log('Data yang akan di kirim:',form);
     }
@@ -100,8 +120,8 @@ useEffect(() =>{
                     Mohon untuk mengisi beberapa data untuk proses daftar anda
                 </Text>
                 <View style={styles.space(64)}/>
-                <Input placeholder="Nama Lengkap" value={form.fullName} 
-                    onChangeText={(value)=>onInputChange(value,'fullName')}/>
+                <Input placeholder="Nama Lengkap" value={form.account} 
+                    onChangeText={(value)=>onInputChange(value,'account')}/>
                 <View style={styles.space(33)}/>
                 <Input placeholder="Email" value={form.email}
                 onChangeText={(value)=>onInputChange(value,'email')}/>
