@@ -43,7 +43,7 @@ const RegisterReducer = (state = initialStateregister,action) =>{
 
 const initialStateLogin ={
     form:{
-        email :'',
+        account :'',
         password:'',
     },
     info : 'Tolong masukan password anda',

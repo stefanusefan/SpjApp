@@ -50,8 +50,8 @@ const Login =({navigation}) =>{
                 Masukan No Account dan Password anda
                 </Text>
                 <View style={styles.space(64)}/>
-                <Input placeholder="Email" value={form.email}
-                onChangeText={(value)=>onInputChange(value,'email')}/>
+                <Input placeholder="Account" value={form.account}
+                onChangeText={(value)=>onInputChange(value,'account')}/>
                 <View style={styles.space(33)}/>
                 <Input placeholder="Password" value={form.password}
                 onChangeText={(value)=>onInputChange(value,'password')} 
