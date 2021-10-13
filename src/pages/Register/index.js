@@ -99,14 +99,13 @@ const Register =({navigation}) =>{
 
         
         Axios.post('http://suryaprabha.co.id/spj-rest-server/api/registrasi',form)
-        .then(result => console.log('res :', result))
-        .catch(err => console.log('err :', err))
+        .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         
-
-
-
-
-
 
         // console.log('Data yang akan di kirim:',form);
     }
