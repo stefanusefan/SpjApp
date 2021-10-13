@@ -19,9 +19,7 @@ const Register =({navigation}) =>{
         email:'',
     })
     const [dataRespon ,setDataRespon] =useState({
-        status:'',
-        pesan:'',
-        data:'',
+        pesan :'',
     })
 
 // useEffect(() =>{
@@ -96,20 +94,21 @@ const Register =({navigation}) =>{
         // .then(json=>{
         //     console.log('pos respon: ',json)
         // })
-
+        try {
+            Axios.post('http://suryaprabha.co.id/spj-rest-server/api/registrasi',form)
+            .then(result =>{
+                setDataRespon(result.data);
+            })
+        } catch (error) {
+            alert(error.message);
+        }
         
-        Axios.post('http://suryaprabha.co.id/spj-rest-server/api/registrasi',form)
-        .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
-
         // console.log('Data yang akan di kirim:',form);
     }
     return(
+
+       
+
         <View style={styles.wrapper.page}>
             {/* ShowVerticalIndicator untuk mengatur scroll vertikal */}
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -118,8 +117,14 @@ const Register =({navigation}) =>{
                 <Text style={styles.text.desc}>
                     Mohon untuk mengisi beberapa data untuk proses daftar anda
                 </Text>
+                {dataRespon.pesan.length > 0 && (
+                <Text style={styles.text.desc}>
+                    {dataRespon.pesan}
+                </Text>
+                )}
+
                 <View style={styles.space(64)}/>
-                <Input placeholder="Nama Lengkap" value={form.account} 
+                <Input placeholder="Account" value={form.account} 
                     onChangeText={(value)=>onInputChange(value,'account')}/>
                 <View style={styles.space(33)}/>
                 <Input placeholder="Email" value={form.email}
@@ -140,6 +145,7 @@ const Register =({navigation}) =>{
             </ScrollView>
 
         </View>
+
     );
 };
 
