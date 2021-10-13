@@ -9,6 +9,7 @@ const initialStateregister ={
         fullName :'',
         email :'',
         password:'',
+        password2:'',
     },
     title : 'Register Page',
     desc : 'Ini adalah desc untuk Register',

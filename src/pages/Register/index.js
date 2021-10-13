@@ -60,6 +60,11 @@ const Register =({navigation}) =>{
                 onChangeText={(value)=>onInputChange(value,'password')} 
                 // Menyembunyikan tulisan di text input
                 secureTextEntry={true}/>
+                 <View style={styles.space(33)}/>
+                <Input placeholder="Confirmasi password" value={form.password2}
+                onChangeText={(value)=>onInputChange(value,'password2')} 
+                // Menyembunyikan tulisan di text input
+                secureTextEntry={true}/>
                 <View style={styles.space(60)}/>
                 <Button title="Daftar" onPress={sendData}/>
 
