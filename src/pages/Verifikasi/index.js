@@ -16,7 +16,7 @@ const Verifikasi = ({navigation}) => {
     const handleGoTo =() => {
         if(nohp.length > 9 && nohp.length < 13 && nohp.substr(0,1) == '8' && !isNaN(nohp)){
             // Arahkan halaman ke verifikasiOtp Menggunakan Navigation.navigate
-            navigation.navigate('FalidasiOtp')
+            navigation.navigate('FalidasiOtp', {nohp,kodeOtp:123456})
         }
     };
     
