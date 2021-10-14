@@ -107,8 +107,6 @@ const Register =({navigation}) =>{
     }
     return(
 
-       
-
         <View style={styles.wrapper.page}>
             {/* ShowVerticalIndicator untuk mengatur scroll vertikal */}
             <ScrollView showsVerticalScrollIndicator={false}>

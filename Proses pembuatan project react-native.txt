@@ -33,6 +33,11 @@
 	pada saat menggistal ridux hala yng perlu dilakukan selanjutnya adalah melakukan configurasi redux dengan cara membuat store, reducer didalam projek dengan melakukan kombinasi state
 26. Membuat Action creater dengan menambah file action di redux
 
+27. instal react native paper 
+	https://callstack.github.io/react-native-paper/getting-started.html
+	Note: Instalasi
+	npm install react-native-paper
+
 
 
 
