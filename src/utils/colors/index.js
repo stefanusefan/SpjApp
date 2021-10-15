@@ -6,6 +6,9 @@ export const colors ={
         default:'#76797B',
         border:'#c0392b',
     },
+    placholder :{
+        default:'#696565',
+    }
     
 
 };
