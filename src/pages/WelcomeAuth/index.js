@@ -26,6 +26,11 @@ const WelcomeAuth =({navigation}) =>{
             title="Daftar"
             onPress={() =>handleGoTo('Register')}
             />
+            <ActionButton 
+            desc=" dan Silahkan  pilih aktivasi, jika akun anda belum Aktive " 
+            title="Aktive"
+            onPress={() =>handleGoTo('Verifikasi')}
+            />
         </View>
     );
 };

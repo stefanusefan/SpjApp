@@ -37,7 +37,16 @@
 	https://callstack.github.io/react-native-paper/getting-started.html
 	Note: Instalasi
 	npm install react-native-paper
+28. install library asyncStorage React Native
+	alamat : https://react-native-async-storage.github.io/async-storage/docs/install/
+	Note Instalassi : 
+	npm install @react-native-async-storage/async-storage
+	Fungsi dan kegunaannya adalah untuk menyimpan history yang terjadi pada aplikasi
+	salah satu contoh yaitu pada saat login user tidak perlu log out lagi
+	krn sudah ada di dalam aplikasi
+	
 
+	
 
 
 

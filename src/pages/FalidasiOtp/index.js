@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native'
 import { colors } from '../../utils/colors'
  import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const FalidasiOtp = (props) => {
 
@@ -20,22 +21,49 @@ const FalidasiOtp = (props) => {
     const [waningerror, setWarningerror] =useState('')
     // 
     const handleGoTo =(kodeOtp) => {
-        if(kodeOtp.length > 5){
-            // Arahkan halaman ke verifikasiOtp Menggunakan Navigation.navigate
-            if(kodeOtp != verifikasiotp){
-                setWarningerror('Code tidak sesuai');
-            }else{
-              
-                navigation.navigate('WelcomeAuth')
-            }
+        
+        if(kodeOtp == verifikasiotp){
+    
+            try {
+                
+                // Panggilkan API untuk melakukan verifikasi
+                fetch('https://reqres.in/api/login', {
+                    method : 'POST',
+                    headers: {
+                                'Content-Type':'application/json'
+                            },
+                            body: JSON.stringify({
+                        email: 'eve.holt@reqres.in',
+                        password: 'cityslicka'
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseJeson) => {
+                    // console.warn(responseJeson)
+                    if(responseJeson.token){
+
+                            // Membuat sesion dgn library asy sehingga user yg sudah melakukan registrasi dan
+                            // kode OTP-nya benar maka langsung direct ke halaman home
+                            // set session_id dengan value session_id ditambah dengan kode random kedalam setItem
+                            AsyncStorage.setItem('session_id', 'session_id' + Math.random())
+
+                        // Arahkan halaman ke verifikasiOtp Menggunakan Navigation.navigate
+                        navigation.navigate('Home')
+                    }
+                })
+    
+            } catch (error) {
+                console.warn(error)
+            }        
         }else{
-            setWarningerror('')
+            setWarningerror('Code OTP tidak sesuai');
         }
+       
     };
     
     return (
         <View style={{flex:1, backgroundColor:colors.default}}>
-            <StatusBar backgroundColor= {colors.default}/>
+            <StatusBar backgroundColor= {colors.dark}/>
             <View style={{marginHorizontal:16, flex:1}}>
             <Text style={{fontSize:50, color:'white', marginTop:20,}}>Verifikasi OTP</Text>
             <Text style={{fontSize:25, color:'white', marginTop:80,}}>Masukin 6-digit kode anda</Text>
@@ -48,7 +76,7 @@ const FalidasiOtp = (props) => {
                     // jika no hp lebih dari 9 maka tulisan berubah menjadi continue dan jika kurang dr 13
                     // maka tulisan defaultnya muncul dan jika nomor depanya bukan 8 maka tulisan defaultnya
                     // muncul kembali
-                    if(nohp.length > 5 ){
+                    if(nohp.length > 6 ){
                        handleGoTo(kodeOtp)
                     }
                 }}

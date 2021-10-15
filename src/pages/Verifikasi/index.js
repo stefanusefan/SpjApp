@@ -1,11 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, useColorScheme, View } from 'react-native'
 import { colors } from '../../utils/colors'
-// import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Verifikasi = ({navigation}) => {
 
-    // const navigation= useNavigation()
     // Mengatur display dari fitur sosmed 
     const [displaySosmed, setDisplaySosmed]= useState('flex');
     // Mengatur untuk text no hp on change text
@@ -13,10 +12,35 @@ const Verifikasi = ({navigation}) => {
     // seting tombol acction agar bisa berfungsi dengan baik
     const[actionButton, setActionButton] =useState('Pilih berdasarkan sosial media anda');
     // 
+   
+
     const handleGoTo =() => {
         if(nohp.length > 9 && nohp.length < 13 && nohp.substr(0,1) == '8' && !isNaN(nohp)){
-            // Arahkan halaman ke verifikasiOtp Menggunakan Navigation.navigate
-            navigation.navigate('FalidasiOtp', {nohp,kodeOtp:123456})
+           
+            
+            try {
+                
+                // Panggilkan API untuk melakukan verifikasi
+                fetch('https://reqres.in/api/login', {
+                    method : 'POST',
+                    headers: {
+                                'Content-Type':'application/json'
+                            },
+                            body: JSON.stringify({
+                        email: 'eve.holt@reqres.in',
+                        password: 'cityslicka'
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseJeson) => {
+                    // console.warn(responseJeson)
+                    // Arahkan halaman ke verifikasiOtp Menggunakan Navigation.navigate
+                    navigation.navigate('FalidasiOtp', {nohp,kodeOtp:123456})
+                })
+    
+            } catch (error) {
+                console.warn(error)
+            }
         }
     };
     
